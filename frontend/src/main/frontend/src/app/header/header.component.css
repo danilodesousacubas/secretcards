@@ -1,0 +1,12 @@
+.header {
+    border: 0px solid #DDDDDD;
+    color: white;
+    background-color: #242729;
+    width: 100%;
+}
+
+.btn-link{
+    color: white !important;
+        font-size: 16px;
+    margin-left: 30px;
+}

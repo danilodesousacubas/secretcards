@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-xs-12">
+        <header></header>
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-xs-10">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <div class="glyphicon glyphicon-search" style="font-size:18px"></div>
+            </span>
+            <input class="form-control" #inputed placeholder="FAST FINDER CARD" (keyup)="0" />
+        </div>
+    </div>
+    <div class="col-xs-2 text-right">
+        <bar></bar>
+    </div>
+<div>
+
+<br/>
+<br/>
+<br/>
+
+<div class="row">
+    <div class="col-xs-12">
+        <panel description="{{card.title}}" *ngFor="let card of cards | filterByTitle:inputed.value" class="col-xs-3">
+            <card description="{{card.description}}" title="{{card.title}}"></card> 
+                
+            <br />
+            
+            <div *ngFor="let tag of card.tags">
+                <a routerLink="tag/{{tag.id}}" replaceUrl="true" class="glyphicon glyphicon-paperclip"> {{tag.name | uppercase}}  </a>
+            </div>
+
+            <a routerLink="/form/new/{{card.id}}" replaceUrl="true"><div class="glyphicon glyphicon-pencil btn btn-warning" style="float: right;"></div></a>
+        </panel>
+    </div>
+</div>

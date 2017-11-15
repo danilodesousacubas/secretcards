@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-xs-12">
+        <header></header>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        
+        <br />
+
+        <div class="row">
+            <div class="col-xs-10"></div>
+
+            <div class="col-xs-2">
+                <bar></bar>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <form (submit)="cadastrar($event)">
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Name</label>
+                            <input name="name" class="form-control"  autocomplete="off" [(ngModel)]="tag.name" autocomplete="off"/>
+                        </div>
+                    </div>
+                                
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <button type="submit" class="btn btn-primary form-control"> Save </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Tags</strong>
+                    </div>
+                    <div class="panel-body">
+                        <div *ngFor="let tag of tags" class="row">
+                            <div class="col-xs-12">{{tag.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <br />
+</div>
+</div>
