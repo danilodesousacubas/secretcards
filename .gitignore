@@ -26,3 +26,11 @@ edge/edge/\.project
 server/\.project
 
 server/\.classpath
+
+frontend/src/main/frontend/node/node_modules/
+
+frontend/src/main/frontend/node_modules/
+
+edge/\.mvn/
+
+frontend/src/main/frontend/npm-debug\.log
