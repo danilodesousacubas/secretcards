@@ -34,3 +34,9 @@ frontend/src/main/frontend/node_modules/
 edge/\.mvn/
 
 frontend/src/main/frontend/npm-debug\.log
+
+\.project
+
+\.settings/org\.eclipse\.core\.resources\.prefs
+
+*.prefs

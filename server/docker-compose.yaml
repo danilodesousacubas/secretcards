@@ -2,8 +2,15 @@ postgres:
     container_name: postgresql
     image: postgres:9.5
     volumes:
-        - ./data:/var/lib/postgresql/data
+        - /var/lib/postgres/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
           - POSTGRES_PASSWORD=postgres
+
+application:
+    container_name: tomcat  
+    image: sec-dock/server:latest
+    ports:
+       - "8080:8080"
+
