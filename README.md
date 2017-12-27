@@ -1,14 +1,6 @@
 #Techs:
 
- - Java 8
- - Spring-boot
- - Angular 4
- - Docker and Docker-compose
- - Postgres 
-
-
-
-
+ - Java 8, - Spring-boot - Angular 4 - Docker and Docker-compose - Postgres 
  
 #install/run server spring-boot app:
 
@@ -20,10 +12,6 @@ mvn spring:boot:run
 
 npm install
 npm start
-
-
-
-
 
 #install/run project with docker:
 
@@ -39,12 +27,6 @@ sudo docker run -p 8080:8080 -t sec-dock/server HOSTS="172.17.0.1 localhost"
 #### remove image docker
 sudo docker rmi -f 2b0fa535477c (se ja houver criado a imagem)
 
-
-
-
-
-
-
 ### Utils commands
 
  - docker images
@@ -56,5 +38,5 @@ sudo docker rmi -f 2b0fa535477c (se ja houver criado a imagem)
 ##### run postgres docker 
 sudo docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres:9.5  
 
-
+sudo docker run -p 8080:8080 -t --name tomcat --link postgresql:postgresql  sec-dock/server 
 
