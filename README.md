@@ -44,7 +44,7 @@ sudo docker run -p 8080:8080 -t --name tomcat --link postgresql:postgresql  sec-
 
 
 
-heroku logs --app secretcards
+heroku logs --tail --app secretcards
 
 
 
