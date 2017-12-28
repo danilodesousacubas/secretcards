@@ -40,3 +40,11 @@ sudo docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres:9
 
 sudo docker run -p 8080:8080 -t --name tomcat --link postgresql:postgresql  sec-dock/server 
 
+
+
+
+
+heroku logs --app secretcards
+
+
+
