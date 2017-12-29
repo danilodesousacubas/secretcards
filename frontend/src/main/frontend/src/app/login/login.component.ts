@@ -36,7 +36,10 @@ export class LoginComponent {
         
         this.config = new Config();
 
-        let resp = this.http.post(this.config.getContext()+"/login", body, options)
+        let url = this.config.getContext()+"/login";
+        console.log("url :: " + url);
+
+        let resp = this.http.post(url, body, options)
              .map(r=> r.json())
              .subscribe (
                  data => {
