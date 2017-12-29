@@ -4,6 +4,8 @@ import { CardComponent } from '../card.component';
 import { JwtService } from '../../../app/services/jwt.service';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../service/card.service';
+import { Config } from '../../config/config';
+
 
 @Component({
     moduleId: module.id,
@@ -21,6 +23,8 @@ export class CardForm {
     card1: Object;
     cards: Object[] = [];
     jsonData: JSON;
+    config = new Config();
+    
     
     jwt = new JwtService();
     
@@ -29,7 +33,7 @@ export class CardForm {
         
         let options = this.jwt.createHeader(http);
 
-        this.http.get('http://localhost:8080/rest/tag', options)
+        this.http.get(this.config.getContext() + '/rest/tag', options)
             .subscribe(x =>  {
                 this.tags = x.json(); 
             }, erro =>  console.log(erro));
@@ -41,7 +45,7 @@ export class CardForm {
 
                  let options = this.jwt.createHeader(this.http);
                  
-                         this.http.get('http://localhost:8080/rest/card/edit/'+this.cardId, options)
+                         this.http.get(this.config.getContext()+'/rest/card/edit/'+this.cardId, options)
                              .subscribe(x =>  {
                                  this.card = x.json();
                              
@@ -58,7 +62,7 @@ export class CardForm {
 
     event.preventDefault();
     
-    this.http.post('http://localhost:8080/rest/card', JSON.stringify(this.card), options)
+    this.http.post(this.config.getContext()+ '/rest/card', JSON.stringify(this.card), options)
         .subscribe(() => {
             this.card = new CardComponent();
             console.log('Card save Sucess');

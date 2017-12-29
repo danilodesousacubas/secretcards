@@ -1,6 +1,7 @@
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Component,Input } from '@angular/core';
 import { JwtService } from '../../app/services/jwt.service';
+import { Config } from '../config/config';
 
  @Component({
      moduleId: module.id,
@@ -14,6 +15,7 @@ import { JwtService } from '../../app/services/jwt.service';
      tags: Object[] = []
      tag: Object = new Object();
      http:Http;
+     config = new Config();
 
      constructor(http: Http){
         this.find(http);
@@ -26,7 +28,7 @@ import { JwtService } from '../../app/services/jwt.service';
         let service = new JwtService();
         let options = service.createHeader(this.http);
         
-        this.http.post('http://localhost:8080/rest/tag', JSON.stringify(this.tag), options)
+        this.http.post(this.config.getContext()+'/rest/tag', JSON.stringify(this.tag), options)
             .subscribe(() => {
                 this.find(this.http);
                 this.tag = new Object();
@@ -36,7 +38,7 @@ import { JwtService } from '../../app/services/jwt.service';
 
         find(http:Http){
             this.http = http;
-            let url = "http://localhost:8080/rest/tag";
+            let url = this.config.getContext()+"/rest/tag";
         
             let service = new JwtService();
             let options = service.createHeader(http);
