@@ -8,7 +8,7 @@ export class JwtService {
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', localStorage.getItem('id_token'));
         let options = new RequestOptions({ headers: headers });
-        console.log("teste");
+        console.log("jwt");
 
         return options;
     }
