@@ -5,6 +5,7 @@ import { JwtService } from '../../../app/services/jwt.service';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../service/card.service';
 import { Config } from '../../config/config';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -20,38 +21,38 @@ export class CardForm {
     http: Http;
     cardId: number;
     service = new CardService();
-    card1: Object;
+    
     cards: Object[] = [];
     jsonData: JSON;
     config = new Config();
     
-    
+    private router: Router;
+        
     jwt = new JwtService();
     
-    constructor(http: Http,  private route: ActivatedRoute) {
-        this.http = http;
+    constructor(private _http: Http, private route: ActivatedRoute, private _router: Router) {
+        this.http = _http;
+        this.router = _router;
         
-        let options = this.jwt.createHeader(http);
+        let options = this.jwt.createHeader(this.http);
 
         this.http.get(this.config.getContext() + '/rest/tag', options)
             .subscribe(x =>  {
                 this.tags = x.json(); 
-            }, erro =>  console.log(erro));
+            }, error =>  console.log(error));
 
              let subscriber = route.params.subscribe(p => {
                  this.cardId = p['cardId']
-                 console.log("cardId ", this.cardId);
-                 //this.card1 = this.service.getCard(http, this.cardId);
-
+    
                  let options = this.jwt.createHeader(this.http);
                  
-                         this.http.get(this.config.getContext()+'/rest/card/edit/'+this.cardId, options)
-                             .subscribe(x =>  {
-                                 this.card = x.json();
-                             
-                             }, erro =>  console.log(erro));
-         
-                            this.tags; 
+                this.http.get(this.config.getContext()+'/rest/card/edit/' + this.cardId, options)
+                    .subscribe(x =>  {
+                        this.card = x.json();
+                    
+                    }, error => console.log(error));
+
+                this.tags; 
              });
 
     }
@@ -65,8 +66,9 @@ export class CardForm {
     this.http.post(this.config.getContext()+ '/rest/card', JSON.stringify(this.card), options)
         .subscribe(() => {
             this.card = new CardComponent();
-            console.log('Card save Sucess');
-        }, erro =>  console.log(erro));
+            this.router.navigate(['/cards']);
+        
+        }, error =>  console.log(error));
     }
 
     onChange(tag:string, event) {

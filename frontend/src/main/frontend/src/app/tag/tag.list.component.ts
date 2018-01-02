@@ -32,20 +32,19 @@ import { Config } from '../config/config';
             .subscribe(() => {
                 this.find(this.http);
                 this.tag = new Object();
-            }, erro =>  console.log(erro));
+            }, error =>  console.log(error));
         }
 
 
         find(http:Http){
             this.http = http;
-            let url = this.config.getContext()+"/rest/tag";
+            let url = this.config.getContext() + "/rest/tag";
         
             let service = new JwtService();
             let options = service.createHeader(http);
     
             var stream = http.get(url, options);
-            stream.subscribe( x => 
-                    { 
+            stream.subscribe( x => { 
                         this.tags = x.json(), 
                         erro => console.log(erro) 
                     }
