@@ -7,6 +7,8 @@ import 'rxjs/add/operator/toPromise';
 import { Card } from '../../domain/card';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
+import {  } from '../../services/jwt.service';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

@@ -1,50 +1,34 @@
-#Techs:
-
- - Java 8, - Spring-boot - Angular 4 - Docker and Docker-compose - Postgres 
+#### Techs:
+ - Java
+ - Spring-boot 
+ - Angular 
+ - Docker
+ - Ionic
+ - Postgres 
  
-#install/run server spring-boot app:
-
+#### install server
 mvn clean install -U
 
+#### run
 mvn spring:boot:run
 
-#run front-end project
-
+#### install front-end project => frontend/src/main/frontend
 npm install
+
+##### run
 npm start
-
-#install/run project with docker:
-
-#### Create jar
-mvn clean install -U
 
 #### create image docker
 sudo mvn -U dockerfile:build
 
-#### run docker
-sudo docker run -p 8080:8080 -t sec-dock/server HOSTS="172.17.0.1 localhost"
+#### run
+sudo docker compose up -d
 
-#### remove image docker
-sudo docker rmi -f 2b0fa535477c (se ja houver criado a imagem)
-
-### Utils commands
-
+#### utils commands
+ - sudo docker run -p 8080:8080 -t sec-dock/server HOSTS="172.17.0.1 localhost"
+ - sudo docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres:9.5
+ - sudo docker rmi -f imagem
  - docker images
- - docker ps <use -a for show all instances docker>
- - docker-compose up -d
+ - docker ps 
  - docker stop <nome da imagem>	
- - docker rmi -f <nome_imagem>  
- 
-##### run postgres docker 
-sudo docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres:9.5  
-
-sudo docker run -p 8080:8080 -t --name tomcat --link postgresql:postgresql  sec-dock/server 
-
-
-
-
-
-heroku logs --tail --app secretcards
-
-
-
+ - heroku logs --tail --app appname
