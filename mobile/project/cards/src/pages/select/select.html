@@ -1,0 +1,29 @@
+<ion-header>
+        <ion-navbar>
+          <ion-title>
+             List of Cards
+          </ion-title>
+        </ion-navbar>
+      </ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <ion-item-group>
+                <ion-item-divider color="light">
+                    <ion-icon name="document" item-left></ion-icon>
+                    {{ card.title }}
+                </ion-item-divider>
+                
+                <ion-item *ngFor="let tag of card.tags">
+                    <ion-icon name="ios-pricetags-outline">     {{tag.name}}</ion-icon>
+                </ion-item>
+
+                <ion-input type="text" value="{{card.description}}"></ion-input>   
+        
+            </ion-item-group>
+        </ion-card-content>
+    </ion-card>
+    <button ion-button block (click)="save()">Save</button>
+    <button ion-button block (click)="cancel()">Cancel</button>
+</ion-content>

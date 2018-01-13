@@ -2,13 +2,17 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { CardService} from '../app/card/service/card.service';
 import { JwtService } from '../jwt/jwt.service';
+import { SelectPage } from '../pages/select/select';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SelectPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -16,7 +20,8 @@ import { JwtService } from '../jwt/jwt.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SelectPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 

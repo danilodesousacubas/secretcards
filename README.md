@@ -25,7 +25,7 @@ sudo mvn -U dockerfile:build
 sudo docker compose up -d
 
 #### run mobile
-ionic serve --lab
+ionic serve --lab dock
 
 
 
@@ -45,7 +45,7 @@ ionic serve --lab
  - docker stop <nome da imagem>	
  - heroku logs --tail --app appname
  
-- sudo docker-compose -f docker-compose.yaml up
-- sudo docker-compose -f docker-compose.yaml down
+ - sudo docker-compose -f docker-compose.yaml up
+ - sudo docker-compose -f docker-compose.yaml down
 
  
