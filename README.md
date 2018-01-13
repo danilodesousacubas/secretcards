@@ -32,3 +32,7 @@ sudo docker compose up -d
  - docker ps 
  - docker stop <nome da imagem>	
  - heroku logs --tail --app appname
+ 
+- sudo docker-compose -f docker-compose.yaml up
+- sudo docker-compose -f docker-compose.yaml down
+ 
