@@ -15,9 +15,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Value("${autentication.login:defaultValue 123}")
+	@Value("${autentication.login}")
 	private String login;
-	@Value("${autentication.password:defaultValue 123}")
+	@Value("${autentication.password}")
 	private String password;
 	
 	@Override

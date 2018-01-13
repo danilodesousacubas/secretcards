@@ -24,6 +24,18 @@ sudo mvn -U dockerfile:build
 #### run
 sudo docker compose up -d
 
+#### run mobile
+ionic serve --lab
+
+
+
+
+
+
+
+
+
+
 #### utils commands
  - sudo docker run -p 8080:8080 -t sec-dock/server HOSTS="172.17.0.1 localhost"
  - sudo docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres:9.5
@@ -35,4 +47,5 @@ sudo docker compose up -d
  
 - sudo docker-compose -f docker-compose.yaml up
 - sudo docker-compose -f docker-compose.yaml down
+
  

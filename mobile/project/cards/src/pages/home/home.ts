@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import { Card } from '../../domain/card';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
-import {  } from '../../services/jwt.service';
+import { JwtService  } from '../../jwt/jwt.service';
 
 @Component({
   selector: 'page-home',
@@ -16,6 +16,8 @@ import {  } from '../../services/jwt.service';
 export class HomePage implements OnInit {
   
   public cards: Card[];
+
+  
 
    constructor(
       public navCtrl: NavController,
@@ -28,11 +30,13 @@ export class HomePage implements OnInit {
     let loader = this._loadingCtrl.create({
       content: 'Carregando Cards ......'
     });
-    
+  
+    let requestOptions = new JwtService().createHeader(this._http);
+
     loader.present();
 
     this._http
-      .get('https://secretcards.herokuapp.com/rest/card')
+      .get('http://localhost:8080/rest/card', requestOptions)
       .map(res => res.json())
       .toPromise()
       .then(cards => {
