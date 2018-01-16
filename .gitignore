@@ -40,3 +40,5 @@ frontend/src/main/frontend/npm-debug\.log
 \.settings/org\.eclipse\.core\.resources\.prefs
 
 *.prefs
+
+mobile/ionic/cards/node_modules/
