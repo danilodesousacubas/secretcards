@@ -10,7 +10,7 @@
 mvn clean install -U
 
 #### run
-mvn spring:boot:run
+mvn spring-boot:run
 
 #### install front-end project => frontend/src/main/frontend
 npm install
