@@ -1,27 +1,49 @@
-<ion-header>
+<ion-header >
     <ion-navbar>
-        <ion-title>
-            Login
-        </ion-title>
+        Join Now
     </ion-navbar>
 </ion-header>
       
-<ion-content>
-    <ion-list>
+<ion-content class="login-style">
 
-        <ion-item>
-            <ion-label stacked>Username</ion-label>
-            <ion-input type="text"></ion-input>
-        </ion-item>
-        
-        <ion-item>
-            <ion-label stacked>Password</ion-label>
-            <ion-input type="password"></ion-input>
-        </ion-item>
-        
-        <ion-item padding>
-            <button ion-button block (click)="login()">Login</button>
-        </ion-item>
-    </ion-list>
+    <ion-grid>
+        <br/>    
+        <br/>    
+        <br/>    
+        <br/>    
+        <br/>    
+
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-item>
+                        <ion-label floating>Username</ion-label>
+                        <ion-input type="text"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Password</ion-label>
+                        <ion-input type="password"></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+        <ion-row padding>
+            <ion-col>
+                <button ion-button full (click)="goToHome()">LOGIN</button>
+                <p style="font-size: 12px; color:gray; text-align: center"> forgot password?</p>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                    <hr style="font-size: 12px; color:gray; text-align: center"/>
+            </ion-col>
+        </ion-row>
+        <ion-row padding>
+            <ion-col>
+                <button  style="background-color:#3b5998;"  ion-button full (click)="goToLogin()">FACEBOOK</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>

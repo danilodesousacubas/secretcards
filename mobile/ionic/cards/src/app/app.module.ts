@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SelectPage } from '../pages/select/select';
+import { IndexPage } from '../pages/index/index';
 
 import { HttpModule, JsonpModule } from '@angular/http';
 
@@ -21,7 +22,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     HomePage,
     TabsPage,
     SelectPage,
-    LoginPage
+    LoginPage,
+    IndexPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     HomePage,
     TabsPage,
     SelectPage,
-    LoginPage
+    LoginPage,
+    IndexPage
   ],
   providers: [
     StatusBar,
