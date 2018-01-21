@@ -4,11 +4,7 @@ import { JwtService } from '../../app/services/jwt.service';
 import { Router } from "@angular/router";
 import { Config } from "../config/config";
 
-import { FacebookService, InitParams } from 'ngx-facebook';
-
-import { LoginResponse } from 'ngx-facebook';
-
-
+import { FacebookService, InitParams,LoginResponse } from 'ngx-facebook';
 
 @Component({
     moduleId: module.id,
@@ -25,12 +21,12 @@ export class LoginComponent {
     http: Http;
     route: Router;
     config: Config;
-    private fb: FacebookService;
+    
 
     constructor(http: Http, private router: Router, private _fb: FacebookService) {
         this.http = http;
         this.route = router;
-        this.fb = _fb;
+    
 
         let initParams: InitParams = {
             appId: '285971068595319',
@@ -38,7 +34,7 @@ export class LoginComponent {
             version: 'v2.11'
           };
       
-          this.fb.init(initParams);
+          this._fb.init(initParams);
       
     }
 
@@ -74,9 +70,10 @@ export class LoginComponent {
 
     loginWithFacebook(): void {
 
-        this._fb.login()
-          .then((response: LoginResponse) => console.log(response))
-          .catch((error: any) => console.error(error));
+        console.log("asdf")
+         this._fb.login()
+           .then((response: LoginResponse) => console.log(response))
+           .catch((error: any) => console.error(error));
     
       }
 }
