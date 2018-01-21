@@ -17,6 +17,7 @@ import { HeaderComponent} from '../app/header/header.component';
 import { CardService} from '../app/card/service/card.service';
 import { Config } from './config/config';
 import { BarComponent } from './bar/bar.component';
+import { FacebookModule } from 'ngx-facebook';
 
 
 @NgModule({
@@ -26,7 +27,10 @@ import { BarComponent } from './bar/bar.component';
       PanelModule, 
       TagsInputModule.forRoot(), 
       routing, 
-      FormsModule ], 
+      FormsModule,
+      FacebookModule.forRoot()
+    ],
+      
     declarations: [ AppComponent, 
       CardListComponent, 
       CardForm, 
