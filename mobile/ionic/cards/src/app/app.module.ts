@@ -14,6 +14,19 @@ import { IndexPage } from '../pages/index/index';
 
 import { HttpModule, JsonpModule } from '@angular/http';
 
+import { Facebook } from '@ionic-native/facebook';
+
+import  firebase from 'firebase';
+firebase.initializeApp({
+  apiKey: "#####",
+  authDomain: "cards-36483.firebaseapp.com",
+  databaseURL: "https://cards-36483.firebaseio.com",
+  projectId: "cards-36483",
+  storageBucket: "cards-36483.appspot.com",
+  messagingSenderId: "53986210022"
+});
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +43,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
     HttpModule,
     JsonpModule,
     IonicModule.forRoot(MyApp)
-   
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,7 +61,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    Facebook
     
   ]
 })
