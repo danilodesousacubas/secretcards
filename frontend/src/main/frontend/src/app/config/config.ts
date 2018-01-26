@@ -5,6 +5,7 @@ export class Config{
     
     constructor() {
         if(this._perfil === 'local'){
+            console.log("local");
             this._context = 'http://localhost:8080';
         } else if(this._perfil === 'production'){
             this._context = 'https://secretcards.herokuapp.com';
