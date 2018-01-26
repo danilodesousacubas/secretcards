@@ -8,8 +8,10 @@ export class Config{
             console.log("local");
             this._context = 'http://localhost:8080';
         } else if(this._perfil === 'production'){
+            console.log("prod");
             this._context = 'https://secretcards.herokuapp.com';
         } else if(this._perfil === 'qas'){
+            console.log("qas");
             this._context = 'https://qas-secretcards.herokuapp.com';
         }
     }
