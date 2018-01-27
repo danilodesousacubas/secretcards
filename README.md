@@ -48,4 +48,6 @@ ionic serve --lab dock
  - sudo docker-compose -f docker-compose.yaml up
  - sudo docker-compose -f docker-compose.yaml down
 
+ - sslmode=require
+
  
