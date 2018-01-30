@@ -14,18 +14,18 @@ import { IndexPage } from '../pages/index/index';
 
 import { HttpModule, JsonpModule } from '@angular/http';
 
-import { Facebook } from '@ionic-native/facebook';
+// import { Facebook } from '@ionic-native/facebook';
 
-import  firebase from 'firebase';
+// import  firebase from 'firebase';
 
-firebase.initializeApp({
-  apiKey: "AIzaSyB-dyRvOhyiDWXbff18zEwGkQPlwVSJNdU",
-  authDomain: "dev-secretcards.firebaseapp.com",
-  databaseURL: "https://dev-secretcards.firebaseio.com",
-  projectId: "dev-secretcards",
-  storageBucket: "",
-  messagingSenderId: "326638685691"
-});
+// firebase.initializeApp({
+//   apiKey: "AIzaSyB-dyRvOhyiDWXbff18zEwGkQPlwVSJNdU",
+//   authDomain: "dev-secretcards.firebaseapp.com",
+//   databaseURL: "https://dev-secretcards.firebaseio.com",
+//   projectId: "dev-secretcards",
+//   storageBucket: "",
+//   messagingSenderId: "326638685691"
+// });
 
 @NgModule({
   declarations: [

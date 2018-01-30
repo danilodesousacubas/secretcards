@@ -8,7 +8,7 @@ import { Injectable, EventEmitter, Inject } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { Platform } from 'ionic-angular';
 
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 @Component({
     selector: 'login',
@@ -17,7 +17,7 @@ import firebase from 'firebase';
 
   export class LoginPage {
        
-    constructor(public _navCtrl: NavController, private facebook: Facebook) {
+    constructor(public _navCtrl: NavController) {
   }  
 
   goToHome(){
