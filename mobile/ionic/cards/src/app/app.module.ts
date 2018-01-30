@@ -17,15 +17,15 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 
 import  firebase from 'firebase';
-firebase.initializeApp({
-  apiKey: "#####",
-  authDomain: "cards-36483.firebaseapp.com",
-  databaseURL: "https://cards-36483.firebaseio.com",
-  projectId: "cards-36483",
-  storageBucket: "cards-36483.appspot.com",
-  messagingSenderId: "53986210022"
-});
 
+firebase.initializeApp({
+  apiKey: "AIzaSyB-dyRvOhyiDWXbff18zEwGkQPlwVSJNdU",
+  authDomain: "dev-secretcards.firebaseapp.com",
+  databaseURL: "https://dev-secretcards.firebaseio.com",
+  projectId: "dev-secretcards",
+  storageBucket: "",
+  messagingSenderId: "326638685691"
+});
 
 @NgModule({
   declarations: [
@@ -61,8 +61,8 @@ firebase.initializeApp({
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpModule,
-    JsonpModule,
-    Facebook
+    JsonpModule
+    
     
   ]
 })

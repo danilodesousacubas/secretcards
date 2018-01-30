@@ -3,15 +3,6 @@
     <name>cards</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <universal-links>
-        <host name="localhost" scheme="http">
-        <!-- <host name="io.ionic.starter" scheme="https" /> -->
-        <host name="cards-36483.firebaseapp.com" scheme="https">
-        <!-- <host name="secretcards.com.br" scheme="http"> -->
-        <!-- <host name="https://secretcards.herokuapp.com/cards" scheme="https"> -->
-        <path url="/__/auth/callback" />
-        </host>
-    </universal-links>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -85,20 +76,25 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
-    <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
-    <plugin name="cordova-plugin-device" spec="1.1.4" />
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
-    <plugin name="cordova-plugin-advanced-http" spec="^1.9.1" />
     <allow-navigation href="http://192.168.0.103:8100" />
-    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
-        <variable name="APP_ID" value="285971068595319" />
-        <variable name="APP_NAME" value="cards" />
+    <plugin name="cordova-plugin-advanced-http" spec="^1.9.1" />
+    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
+    <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
+    <plugin name="cordova-plugin-buildinfo" spec="~2.0.1" />
+    <plugin name="cordova-universal-links-plugin" spec="~1.2.1" />
+    <plugin name="cordova-plugin-browsertab" spec="~0.2.0" />
+    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
+        <variable name="URL_SCHEME" value="com.firebase.cordova" />
+        <variable name="ANDROID_SCHEME" value=" " />
+        <variable name="ANDROID_HOST" value=" " />
+        <variable name="ANDROID_PATHPREFIX" value="/" />
     </plugin>
-    <plugin name="cordova-plugin-buildinfo" spec="^2.0.1" />
-    <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
-    <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^2.0.1" />
-    <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~2.0.1" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="141950963274544" />
+        <variable name="APP_NAME" value="141950963274544" />
+    </plugin>
 </widget>

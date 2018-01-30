@@ -39,15 +39,15 @@ import firebase from 'firebase';
       }).catch((error) => { console.log(error) });
       */
 
-      let provider = new firebase.auth.FacebookAuthProvider();
+      // let provider = new firebase.auth.FacebookAuthProvider();
       
-      firebase.auth().signInWithRedirect(provider).then( () => {
-        firebase.auth().getRedirectResult().then(result => {
-          alert(JSON.stringify(result));
-        }).catch(function(error){
-          alert(JSON.stringify(error));
-        });
-      });
+      // firebase.auth().signInWithRedirect(provider).then( () => {
+      //   firebase.auth().getRedirectResult().then(result => {
+      //     alert(JSON.stringify(result));
+      //   }).catch(function(error){
+      //     alert(JSON.stringify(error));
+      //   });
+      // });
     }
   }
 

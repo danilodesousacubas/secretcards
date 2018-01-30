@@ -10,19 +10,25 @@
     "cordova-plugin-advanced-http": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "ionic-plugin-keyboard": {
+    "cordova-plugin-browsertab": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-buildinfo": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "com.firebase.cordova",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/",
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-ionic-webview": {
+    "cordova-plugin-facebook4": {
+      "APP_ID": "141950963274544",
+      "APP_NAME": "141950963274544",
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },
