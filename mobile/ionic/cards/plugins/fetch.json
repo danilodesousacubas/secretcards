@@ -100,12 +100,12 @@
   "cordova-plugin-facebook4": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-facebook4@^1.9.1"
+      "id": "cordova-plugin-facebook4"
     },
     "is_top_level": true,
     "variables": {
       "APP_ID": "141950963274544",
-      "APP_NAME": "141950963274544"
+      "APP_NAME": "dev-cards"
     }
   }
 }

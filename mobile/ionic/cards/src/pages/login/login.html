@@ -34,17 +34,26 @@
                 <p style="font-size: 12px; color:gray; text-align: center"> forgot password?</p>
             </ion-col>
         </ion-row>
+
         <ion-row>
             <ion-col>
                     <hr style="font-size: 12px; color:gray; text-align: center"/>
             </ion-col>
         </ion-row>
+
         <ion-row padding>
             <ion-col>
-                É esse
-                <button  style="background-color:#3b5998;"  ion-button full (click)="loginWithFacebook()">FACEBOOK333</button>
+                    <button 
+                        style="background-color:#3b5998;" ion-button full icon-left (click)='loginWithFacebook();'>
+                           <ion-icon name="logo-facebook"></ion-icon>Login com Facebook
+                    </button>
             </ion-col>
         </ion-row>
-    </ion-grid>
 
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-right (click)="logout()">Logout</button>
+            </ion-col>    
+        </ion-row>
+    </ion-grid>
 </ion-content>

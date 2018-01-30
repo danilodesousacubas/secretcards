@@ -11,21 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SelectPage } from '../pages/select/select';
 import { IndexPage } from '../pages/index/index';
-
 import { HttpModule, JsonpModule } from '@angular/http';
-
-// import { Facebook } from '@ionic-native/facebook';
-
-// import  firebase from 'firebase';
-
-// firebase.initializeApp({
-//   apiKey: "AIzaSyB-dyRvOhyiDWXbff18zEwGkQPlwVSJNdU",
-//   authDomain: "dev-secretcards.firebaseapp.com",
-//   databaseURL: "https://dev-secretcards.firebaseio.com",
-//   projectId: "dev-secretcards",
-//   storageBucket: "",
-//   messagingSenderId: "326638685691"
-// });
+import { Facebook } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -61,9 +48,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpModule,
-    JsonpModule
-    
-    
+    JsonpModule,
+    Facebook
   ]
 })
 export class AppModule {}

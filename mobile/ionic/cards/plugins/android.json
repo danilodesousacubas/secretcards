@@ -28,7 +28,25 @@
     },
     "cordova-plugin-facebook4": {
       "APP_ID": "141950963274544",
-      "APP_NAME": "141950963274544",
+      "APP_NAME": "dev-cards",
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-universal-links-plugin": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },

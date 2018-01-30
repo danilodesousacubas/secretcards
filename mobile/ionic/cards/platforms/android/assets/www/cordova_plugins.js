@@ -245,6 +245,40 @@ module.exports = [
     "clobbers": [
       "facebookConnectPlugin"
     ]
+  },
+  {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open",
+      "window.open"
+    ]
+  },
+  {
+    "id": "cordova-plugin-splashscreen.SplashScreen",
+    "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+    "pluginId": "cordova-plugin-splashscreen",
+    "clobbers": [
+      "navigator.splashscreen"
+    ]
+  },
+  {
+    "id": "cordova-universal-links-plugin.universalLinks",
+    "file": "plugins/cordova-universal-links-plugin/www/universal_links.js",
+    "pluginId": "cordova-universal-links-plugin",
+    "clobbers": [
+      "universalLinks"
+    ]
+  },
+  {
+    "id": "ionic-plugin-keyboard.keyboard",
+    "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+    "pluginId": "ionic-plugin-keyboard",
+    "clobbers": [
+      "cordova.plugins.Keyboard"
+    ],
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -256,7 +290,13 @@ module.exports.metadata =
   "cordova-plugin-buildinfo": "2.0.1",
   "cordova-plugin-customurlscheme": "4.3.0",
   "cordova-plugin-device": "1.1.4",
-  "cordova-plugin-facebook4": "1.9.1"
+  "cordova-plugin-facebook4": "1.9.1",
+  "cordova-plugin-inappbrowser": "2.0.1",
+  "cordova-plugin-ionic-webview": "1.1.16",
+  "cordova-plugin-splashscreen": "4.0.3",
+  "cordova-plugin-whitelist": "1.3.1",
+  "cordova-universal-links-plugin": "1.2.1",
+  "ionic-plugin-keyboard": "2.2.1"
 };
 // BOTTOM OF METADATA
 });

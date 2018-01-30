@@ -95,6 +95,7 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~2.0.1" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="141950963274544" />
-        <variable name="APP_NAME" value="141950963274544" />
+        <variable name="APP_NAME" value="dev-cards" />
     </plugin>
+    <engine name="android" spec="~6.3.0" />
 </widget>
