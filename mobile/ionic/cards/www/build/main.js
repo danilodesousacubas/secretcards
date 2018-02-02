@@ -6,7 +6,7 @@ webpackJsonp([0],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__ = __webpack_require__(203);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -22,25 +22,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import firebase from 'firebase';
+
 var LoginPage = (function () {
-    function LoginPage(_navCtrl, fb) {
+    function LoginPage(_navCtrl, fb, alert) {
         var _this = this;
         this._navCtrl = _navCtrl;
         this.fb = fb;
+        this.alert = alert;
         this.isLoggedIn = false;
+        console.log("called constructor");
         fb.getLoginStatus()
             .then(function (res) {
             console.log(res.status);
             if (res.status === "connect") {
                 _this.isLoggedIn = true;
+                console.log("status logged");
             }
             else {
                 _this.isLoggedIn = false;
+                console.log("status not logged");
             }
         })
             .catch(function (e) { return console.log(e); });
     }
+    LoginPage_1 = LoginPage;
     LoginPage.prototype.loginWithFacebook = function () {
         var _this = this;
         this.fb.login(['public_profile', 'user_friends', 'email'])
@@ -51,7 +56,7 @@ var LoginPage = (function () {
                 _this._navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
             }
             else {
-                _this.isLoggedIn = false;
+                //this.isLoggedIn = false;
             }
         })
             .catch(function (e) { return console.log('Error logging into Facebook', e); });
@@ -72,17 +77,37 @@ var LoginPage = (function () {
         this.fb.logout()
             .then(function (res) { return _this.isLoggedIn = false; })
             .catch(function (e) { return console.log('Error logout from Facebook', e); });
+        this.isLoggedIn = false;
+        this._navCtrl.push(LoginPage_1);
+        var alert = this.alert.create({
+            title: 'Logout' + '2' + this.isLoggedIn,
+            subTitle: 'sub logout',
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                        console.log('Cancel clicked');
+                    }
+                }
+            ]
+        });
+        alert.present();
     };
     LoginPage.prototype.goToHome = function () {
         this._navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
     };
-    LoginPage = __decorate([
+    LoginPage.prototype.isFacebookLogged = function () {
+        return this.isLoggedIn;
+    };
+    LoginPage = LoginPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'login',template:/*ion-inline-start:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/login/login.html"*/'<ion-header >\n    <ion-navbar>\n        JOIN NOW\n    </ion-navbar>\n</ion-header>\n      \n<ion-content class="login-style">\n\n    <ion-grid>\n        <br/>    \n        <br/>    \n        <br/>    \n        <br/>    \n        <br/>    \n\n        <ion-row>\n            <ion-col>\n                <ion-list>\n                    <ion-item>\n                        <ion-label floating>Username</ion-label>\n                        <ion-input type="text"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Password</ion-label>\n                        <ion-input type="password"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n\n        <ion-row padding>\n            <ion-col>\n                <button ion-button full (click)="goToHome()">LOGIN</button>\n                <p style="font-size: 12px; color:gray; text-align: center"> forgot password?</p>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                    <hr style="font-size: 12px; color:gray; text-align: center"/>\n            </ion-col>\n        </ion-row>\n        <ion-row padding>\n            <ion-col>\n                    <button \n                        style="background-color:#3b5998;"  \n                        ion-button full icon-left (click)=\'loginWithFacebook();\'>\n                           <ion-icon name="logo-facebook"></ion-icon>Login com Facebook\n                    </button>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col>\n                <button ion-button icon-right (click)="logout()">Logout</button>\n            </ion-col>    \n        </ion-row>\n        \n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/login/login.html"*/
+            selector: 'login',template:/*ion-inline-start:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/login/login.html"*/'<ion-header >\n    <ion-navbar>\n        JOIN NOW\n    </ion-navbar>\n</ion-header>\n      \n<ion-content class="login-style">\n\n    <ion-grid>\n        <br/>    \n        <br/>    \n        <br/>    \n        <br/>    \n        <br/>    \n\n        <ion-row>\n            <ion-col>\n                <ion-list>\n                    <ion-item>\n                        <ion-label floating>Username</ion-label>\n                        <ion-input type="text"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>Password</ion-label>\n                        <ion-input type="password"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n\n        <ion-row padding>\n            <ion-col>\n                <button ion-button full (click)="goToHome()">LOGIN</button>\n                <p style="font-size: 12px; color:gray; text-align: center"> forgot password?</p>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col>\n                    <hr style="font-size: 12px; color:gray; text-align: center"/>\n            </ion-col>\n        </ion-row>\n\n        <ion-row padding>\n            <span>teste 2 {{isFacebookLogged()}}</span>\n\n            <!-- *ngIf="isFacebookLogged()" -->\n            <ion-col >\n                    <button\n                        style="background-color:#3b5998;" ion-button full icon-left (click)=\'loginWithFacebook();\'>\n                           <ion-icon name="logo-facebook"></ion-icon>Login com Facebook s\n                    </button>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col>\n                <button ion-button full (click)="logout()" name="logo-facebook">Logout</button>\n            </ion-col>    \n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/login/login.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__["a" /* Facebook */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__["a" /* Facebook */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], LoginPage);
     return LoginPage;
+    var LoginPage_1;
 }());
 
 //# sourceMappingURL=login.js.map
@@ -129,7 +154,7 @@ webpackEmptyAsyncContext.id = 154;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IndexPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -167,7 +192,7 @@ var IndexPage = (function () {
     IndexPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/index/index.html"*/'<ion-content class="start-style" padding autoplay="100">\n    <ion-slides pager style="height: 70%;">\n        \n        <ion-slide>\n            <img class="slide-image" src="assets/imgs/pop-corn-img-1.png"/>\n            <p>The <b>Movie Mais</b> is the better App for find friends to cinema.</p>\n        </ion-slide>\n            \n        <ion-slide *ngFor="let slide of slides">\n            <img [src]="slide.image" class="slide-image"/>\n            <h2 class="slide-title" [innerHTML]="slide.title"></h2>\n             <p [innerHTML]="slide.description"></p>\n        </ion-slide>\n    \n    </ion-slides>\n        \n    <ion-grid>\n        <ion-row>\n            <ion-col padding>\n                <button ion-button full  (click)="goToLogin()">SIGN IN</button>\n                <br/>\n                <button ion-button full (click)="login()">JOIN NOW</button>\n            </ion-col>\n        </ion-row>      \n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/index/index.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], IndexPage);
     return IndexPage;
 }());
@@ -258,7 +283,7 @@ var AboutPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -278,7 +303,7 @@ var ContactPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-contact',template:/*ion-inline-start:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/contact/contact.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], ContactPage);
     return ContactPage;
 }());
@@ -293,7 +318,7 @@ var ContactPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_jwt_jwt_service__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_select_select__ = __webpack_require__(202);
@@ -344,7 +369,7 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n      <ion-title>\n        Home\n      </ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding>\n        <ion-list>\n            <ion-item *ngFor="let card of cards" (click)="select(card)">\n                <ion-item-group reorder="true">  \n                  <ion-icon name="document" large ></ion-icon>\n                            {{card.title}}\n                  <ion-item *ngFor="let tag of card.tags">\n                      <ion-icon name="ios-pricetags-outline">            {{tag.name}}</ion-icon>\n                    </ion-item>\n                </ion-item-group>\n            </ion-item>\n        </ion-list>\n </ion-content>\n'/*ion-inline-end:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -359,7 +384,7 @@ var HomePage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -382,7 +407,7 @@ var SelectPage = (function () {
     SelectPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/select/select.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Card\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card>\n        <ion-card-content>\n\n            <ion-card-title>\n                {{ card.title }}\n            </ion-card-title>\n\n            <ion-item-group>\n\n                <ion-item>\n                    <ion-icon name=\'musical-notes\' item-start style="color: #32db64"></ion-icon>\n                        Atualizações\n                    <ion-badge item-end>9</ion-badge>\n                </ion-item>\n\n\n                <ion-item *ngFor="let tag of card.tags">\n                    <ion-icon  style="color: #d03e84; font-size: 14px;" name="ios-pricetags-outline"> {{tag.name}}</ion-icon>\n                </ion-item>\n\n                <ion-textarea charswidth="23" rows=50 cols="10" type="text" value="{{card.description}}" style="border: 1px; resize:vertical;"></ion-textarea>\n\n            </ion-item-group>\n        </ion-card-content>\n    </ion-card>\n\n    <br/>\n\n    <button ion-button block (click)="save()">Save</button>\n    <br/>\n    <button ion-button block (click)="cancel()">Cancel</button>\n</ion-content>'/*ion-inline-end:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/pages/select/select.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], SelectPage);
     return SelectPage;
 }());
@@ -412,7 +437,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(200);
@@ -446,15 +471,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// import  firebase from 'firebase';
-// firebase.initializeApp({
-//   apiKey: "AIzaSyB-dyRvOhyiDWXbff18zEwGkQPlwVSJNdU",
-//   authDomain: "dev-secretcards.firebaseapp.com",
-//   databaseURL: "https://dev-secretcards.firebaseio.com",
-//   projectId: "dev-secretcards",
-//   storageBucket: "",
-//   messagingSenderId: "326638685691"
-// });
 var AppModule = (function () {
     function AppModule() {
     }
@@ -474,11 +490,11 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_13__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_13__angular_http__["d" /* JsonpModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: []
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_4__pages_about_about__["a" /* AboutPage */],
@@ -492,7 +508,7 @@ var AppModule = (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
                 __WEBPACK_IMPORTED_MODULE_13__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_13__angular_http__["d" /* JsonpModule */],
                 __WEBPACK_IMPORTED_MODULE_14__ionic_native_facebook__["a" /* Facebook */]
@@ -512,7 +528,7 @@ var AppModule = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_index_index__ = __webpack_require__(197);
@@ -543,7 +559,7 @@ var MyApp = (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/mint/Development/Sources/secretcards/mobile/ionic/cards/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
