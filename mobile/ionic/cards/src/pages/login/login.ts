@@ -83,7 +83,7 @@ import { Facebook } from '@ionic-native/facebook';
     }
     
     goToHome(){
-      this._navCtrl.push(TabsPage);
+      this._navCtrl.push(TabsPage, { indexSelected: 1 });
     }
 
     isFacebookLogged(){

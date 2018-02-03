@@ -11,14 +11,18 @@
       
         <ion-item-group>
           <ion-item *ngFor="let card of cards" (click)="select(card)">
-              <ion-avatar item-start>
+              <!-- <ion-avatar item-start>
                   <img src="../../assets/icon/favicon.ico">
-              </ion-avatar>
+              </ion-avatar> -->
               <ion-item-group>
                   <span style="font-size: 15px; font-weight: 500; text-transform: uppercase;">{{card.title}} </span>
-                  <ion-item no-padding *ngFor="let tag of card.tags" no-lines style="color: rgb(90, 88, 88); font-size: 12px;">
-                      <ion-icon name="pricetag" item-start style="color: #f53d3d; font-size: 22px"></ion-icon>
-                      {{tag.name}}
+                  <span><br/><br/></span>
+                    
+
+                  <ion-item *ngFor="let tag of card.tags" no-lines style="color: rgb(90, 88, 88); font-size: 12px; vertical-align: middle;">
+                      
+                    <ion-icon name="pricetag" item-start style="color: #f53d3d; font-size: 22px; vertical-align: middle;"></ion-icon>
+                          <span style="font-size: 15px; vertical-align: middle;">{{tag.name}}</span>
                   </ion-item>
               </ion-item-group>
               <button ion-button clear item-end>View</button>
