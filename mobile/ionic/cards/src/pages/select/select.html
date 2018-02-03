@@ -7,27 +7,39 @@
 </ion-header>
 
 <ion-content padding>
+
     <ion-card>
         <ion-card-content>
-
             <ion-card-title>
-                {{ card.title }}
+                <input type="text" [(ngModel)]="card.title"
+                    style="
+                        border: none;
+                        border-bottom: 1px solid #f53d3d; 
+                        text-align: center;
+                        width: 100%"/>
             </ion-card-title>
 
             <ion-item-group>
 
                 <ion-item>
-                    <ion-icon name='musical-notes' item-start style="color: #32db64"></ion-icon>
+                    <ion-icon name='chatboxes' item-start style="color: #32db64"></ion-icon>
                         Atualizações
-                    <ion-badge item-end>9</ion-badge>
+                    <ion-badge item-end>{{card.version}}</ion-badge>
                 </ion-item>
-
 
                 <ion-item *ngFor="let tag of card.tags">
-                    <ion-icon  style="color: #d03e84; font-size: 14px;" name="ios-pricetags-outline"> {{tag.name}}</ion-icon>
+                    <ion-icon name="pricetag" item-start style="color: #e94218"></ion-icon>
+                        {{tag.name}}
                 </ion-item>
 
-                <ion-textarea charswidth="23" rows=50 cols="10" type="text" value="{{card.description}}" style="border: 1px; resize:vertical;"></ion-textarea>
+                <ion-textarea charswidth="23" rows=50 cols="10" type="text"   
+                     [(ngModel)]="card.description" value="{{card.description}}" 
+                        style="
+                            border-style: solid; 
+                            border-color: rgb(235, 235, 235);
+                            border-block-end: 0.5px;
+                            border-radius: 0.1%;">
+                </ion-textarea>
 
             </ion-item-group>
         </ion-card-content>
@@ -36,6 +48,9 @@
     <br/>
 
     <button ion-button block (click)="save()">Save</button>
+
     <br/>
+
     <button ion-button block (click)="cancel()">Cancel</button>
+
 </ion-content>

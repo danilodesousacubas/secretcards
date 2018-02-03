@@ -42,3 +42,9 @@ frontend/src/main/frontend/npm-debug\.log
 *.prefs
 
 mobile/ionic/cards/node_modules/
+
+mobile/ionic/cards/www/build/main\.js
+
+mobile/ionic/cards/www/
+
+mobile/ionic/cards/\.sourcemaps/
