@@ -22,13 +22,13 @@
             <ion-item-group>
 
                 <ion-item>
-                    <ion-icon name='chatboxes' item-start style="color: #32db64"></ion-icon>
+                    <ion-icon name='chatboxes' item-start style="color: #32db64; font-size: 22px;"></ion-icon>
                         Atualizações
                     <ion-badge item-end>{{card.version}}</ion-badge>
                 </ion-item>
 
                 <ion-item *ngFor="let tag of card.tags">
-                    <ion-icon name="pricetag" item-start style="color: #e94218"></ion-icon>
+                    <ion-icon name="pricetag" item-start style="color: #f53d3d; font-size: 22px;"></ion-icon>
                         {{tag.name}}
                 </ion-item>
 
