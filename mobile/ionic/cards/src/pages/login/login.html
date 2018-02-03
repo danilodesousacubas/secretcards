@@ -42,21 +42,23 @@
         </ion-row>
 
         <ion-row padding>
-            <span>teste 2 {{isFacebookLogged()}}</span>
-
-            <!-- *ngIf="isFacebookLogged()" -->
-            <ion-col >
-                    <button
-                        style="background-color:#3b5998;" ion-button full icon-left (click)='loginWithFacebook();'>
-                           <ion-icon name="logo-facebook"></ion-icon>Login com Facebook s
-                    </button>
+            <ion-col>
+                <button style="background-color:#3b5998;" 
+                    ion-button full icon-left (click)='loginWithFacebook();'>
+                         <ion-icon name="logo-facebook"></ion-icon>
+                            Login com Facebook s
+                </button>
             </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row padding>
             <ion-col>
-                <button ion-button full (click)="logout()" name="logo-facebook">Logout</button>
+                <button style="background-color:#3b5998;" 
+                    ion-button full icon-left (click)="logout()">
+                        Logout
+                </button>
             </ion-col>    
         </ion-row>
+    
     </ion-grid>
 </ion-content>

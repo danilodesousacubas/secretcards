@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import { Injectable, EventEmitter, Inject } from '@angular/core';
-import { Observable } from "rxjs/Observable";
-import { Platform } from 'ionic-angular';
+import { Facebook } from '@ionic-native/facebook';
+
 
 @Component({
     selector: 'login',

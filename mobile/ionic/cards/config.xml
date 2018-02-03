@@ -98,4 +98,5 @@
         <variable name="APP_NAME" value="dev-cards" />
     </plugin>
     <engine name="android" spec="~6.3.0" />
+    <engine name="browser" spec="~5.0.3" />
 </widget>
