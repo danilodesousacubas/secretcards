@@ -1,5 +1,6 @@
 package br.com.dsousa.cards.jwt;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -11,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import br.com.dsousa.cards.user.repository.UserRepository;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,6 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private String login;
 	@Value("${autentication.password}")
 	private String password;
+	
+	@Autowired
+	public UserRepository userRepository;
 	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -50,6 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// cria uma conta default
 						
+		userRepository.findAll();
+		
 		auth.inMemoryAuthentication()
 			.withUser(login)
 			.password(password)
