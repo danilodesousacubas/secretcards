@@ -5,11 +5,11 @@
             schemaName="public"
             tableName="card">
             
-    			<column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE">
+    			<column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE" defaultValueComputed="CURRENT_TIMESTAMP">
                 	<constraints nullable="false"/>
             	</column>
             
-            	<column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE">
+            	<column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE" defaultValueComputed="CURRENT_TIMESTAMP">
 	                <constraints nullable="false"/>
     	        </column>
             	            
