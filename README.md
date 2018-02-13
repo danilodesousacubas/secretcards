@@ -54,6 +54,8 @@ ionic serve --lab dock
  
 - mvn liquibase:updateSQL -Dliquibase.contexts=les -Dliquibase.url=jdbc:postgresql://localhost:5432/cards -Dliquibase.changeLogFile="src/main/resources/db/changelog/db.changelog-diff-13-02-2018.xml" -Dliquibase.username="postgres" -Dliquibase.password="postgres"
 
+ - sslmode=require
+
  
  
  

@@ -1,22 +1,23 @@
 export class Config{
 
     private _context;
-    private _perfil = 'production';
+    private _perfil = 'dev';
     
     constructor() {
-        
-        console.log("=============================");
-        console.log("=============================" + this._perfil);
-        
-        
         if(this._perfil === 'local'){
-            
-            console.log("SET LOCAL");
+            console.log("local");
             this._context = 'http://localhost:8080';
-        }
+        
+        } else if(this._perfil === 'dev'){
+            console.log("dev");
+            this._context = 'https://dev-secretcards.herokuapp.com';
 
-        if(this._perfil === 'production'){
-            console.log("SET PRODUCTION");
+        } else if(this._perfil === 'qas'){
+            console.log("qas");
+            this._context = 'https://qas-secretcards.herokuapp.com';
+        
+        } else if(this._perfil === 'production'){
+            console.log("production");
             this._context = 'https://secretcards.herokuapp.com';
         }
     }

@@ -4,6 +4,8 @@ import { JwtService } from '../../app/services/jwt.service';
 import { Router } from "@angular/router";
 import { Config } from "../config/config";
 
+import { FacebookService, InitParams,LoginResponse } from 'ngx-facebook';
+
 @Component({
     moduleId: module.id,
     selector: 'login',
@@ -19,10 +21,21 @@ export class LoginComponent {
     http: Http;
     route: Router;
     config: Config;
+    
 
-    constructor(http: Http, private router: Router) {
+    constructor(http: Http, private router: Router, private _fb: FacebookService) {
         this.http = http;
         this.route = router;
+    
+
+        let initParams: InitParams = {
+            appId: '285971068595319',
+            xfbml: true,
+            version: 'v2.11'
+          };
+      
+          this._fb.init(initParams);
+      
     }
 
     autenticar(event) {
@@ -54,4 +67,13 @@ export class LoginComponent {
              )
         headers.append('Authorization', localStorage.getItem('id_token'));
     }
+
+    loginWithFacebook(): void {
+
+        console.log("asdf")
+         this._fb.login()
+           .then((response: LoginResponse) => console.log(response))
+           .catch((error: any) => console.error(error));
+    
+      }
 }

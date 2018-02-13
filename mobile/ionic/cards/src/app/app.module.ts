@@ -10,8 +10,9 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SelectPage } from '../pages/select/select';
-
+import { IndexPage } from '../pages/index/index';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { Facebook } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,15 @@ import { HttpModule, JsonpModule } from '@angular/http';
     HomePage,
     TabsPage,
     SelectPage,
-    LoginPage
+    LoginPage,
+    IndexPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     JsonpModule,
     IonicModule.forRoot(MyApp)
-   
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,15 +40,16 @@ import { HttpModule, JsonpModule } from '@angular/http';
     HomePage,
     TabsPage,
     SelectPage,
-    LoginPage
+    LoginPage,
+    IndexPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpModule,
-    JsonpModule
-    
+    JsonpModule,
+    Facebook
   ]
 })
 export class AppModule {}

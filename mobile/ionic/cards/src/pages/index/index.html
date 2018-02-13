@@ -1,0 +1,26 @@
+<ion-content class="start-style" padding autoplay="100">
+    <ion-slides pager style="height: 70%;">
+        
+        <ion-slide>
+            <img class="slide-image" src="assets/imgs/pop-corn-img-1.png"/>
+            <p>The <b>Movie Mais</b> is the better App for find friends to cinema.</p>
+        </ion-slide>
+            
+        <ion-slide *ngFor="let slide of slides">
+            <img [src]="slide.image" class="slide-image"/>
+            <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+             <p [innerHTML]="slide.description"></p>
+        </ion-slide>
+    
+    </ion-slides>
+        
+    <ion-grid>
+        <ion-row>
+            <ion-col padding>
+                <button ion-button primary full (click)="goToLogin()">SIGN IN</button>
+                <br/>
+                <button ion-button primary full (click)="login()">JOIN NOW</button>
+            </ion-col>
+        </ion-row>      
+    </ion-grid>
+</ion-content>
