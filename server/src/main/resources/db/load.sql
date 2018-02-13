@@ -11,6 +11,9 @@ insert into cards_tags (card_id, tags_id) values (2,2);
 insert into tag (id,name) values (nextval('seq_tag'),'Aula 30');
 insert into tag (id,name) values (nextval('seq_tag'),'Classifição de Palavras');
 
+drop schema public cascade;
+drop database cards;
+
 drop table card cascade;
 drop table public.tag cascade;
 drop table public.cards_tags cascade;
