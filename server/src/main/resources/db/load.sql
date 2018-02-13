@@ -10,3 +10,14 @@ insert into cards_tags (card_id, tags_id) values (2,2);
 
 insert into tag (id,name) values (nextval('seq_tag'),'Aula 30');
 insert into tag (id,name) values (nextval('seq_tag'),'Classifição de Palavras');
+
+drop table card cascade;
+drop table public.tag cascade;
+drop table public.cards_tags cascade;
+drop table public.databasechangelog cascade;
+drop table public.users cascade;
+drop table public.databasechangeloglock cascade;
+
+drop sequence public.seq_card;
+drop sequence public.seq_tag;
+drop sequence public.seq_user;
