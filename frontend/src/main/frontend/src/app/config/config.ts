@@ -1,7 +1,7 @@
 export class Config{
 
     private _context;
-    private _perfil = 'dev';
+    private _perfil = 'production';
     
     constructor() {
         if(this._perfil === 'local'){

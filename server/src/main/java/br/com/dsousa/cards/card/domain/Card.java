@@ -28,7 +28,7 @@ import br.com.dsousa.cards.utils.ZonedDateTimePersistenceConverter;
 
 @Entity
 @Table(name = "card")
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public class Card {
 
 	@Id
@@ -50,15 +50,15 @@ public class Card {
 	@Version
 	public Long version;
 
-	@CreatedDate
-	@Column(name = "created_date", nullable = false)
-	@Convert(converter = ZonedDateTimePersistenceConverter.class)
-	private ZonedDateTime createdDate;
-
-	@LastModifiedDate
-	@Column(name = "modified_date", nullable = false)
-	@Convert(converter = ZonedDateTimePersistenceConverter.class)
-	private ZonedDateTime modifiedDate;
+//	@CreatedDate
+//	@Column(name = "created_date", nullable = false)
+//	@Convert(converter = ZonedDateTimePersistenceConverter.class)
+//	private ZonedDateTime createdDate;
+//
+//	@LastModifiedDate
+//	@Column(name = "modified_date", nullable = false)
+//	@Convert(converter = ZonedDateTimePersistenceConverter.class)
+//	private ZonedDateTime modifiedDate;
 
 	public Long getId() {
 		return id;
@@ -92,20 +92,20 @@ public class Card {
 		this.title = title;
 	}
 
-	public ZonedDateTime getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(ZonedDateTime createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public ZonedDateTime getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public void setModifiedDate(ZonedDateTime modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
+//	public ZonedDateTime getCreatedDate() {
+//		return createdDate;
+//	}
+//
+//	public void setCreatedDate(ZonedDateTime createdDate) {
+//		this.createdDate = createdDate;
+//	}
+//
+//	public ZonedDateTime getModifiedDate() {
+//		return modifiedDate;
+//	}
+//
+//	public void setModifiedDate(ZonedDateTime modifiedDate) {
+//		this.modifiedDate = modifiedDate;
+//	}
 
 }
