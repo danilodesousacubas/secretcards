@@ -1,6 +1,6 @@
 import { Component, Input, Inject } from "@angular/core";
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
+import { TagComponent } from '.././tag/tag.component';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -13,5 +13,5 @@ export class CardComponent{
     @Input() id: string;
     @Input() title: string;
     @Input() description: string;
-    @Input() tags:Object[] = [];
+    @Input() tags: Object[] = [];
 }

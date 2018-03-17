@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <form (submit)="cadastrar($event)">
+        <form (submit)="save($event)">
             
             <br/>
             
@@ -25,20 +25,26 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><strong>Tags</strong></div>
                         <div class="panel-body">
-                            <div class="row" style="margin-top: 5px; margin-left: 10px;" *ngFor="let tag of tags">
-                                <input type="checkbox" (change)="onChange(tag, $event.target.checked)">            {{tag.name | uppercase}}
+                            <div class="row" style="margin-top: 5px; margin-left: 10px;" *ngFor="let tag of tagsComponent">
+                                <input type="checkbox" (change)="onChange(tag.name, $event.target.checked)">            
+                                    {{tag.name | uppercase}}
                             </div>        
                         </div>
                     </div>
-                </div>
                 
+                <pre>tags : {{tagsComponent | json}}</pre>
+                <pre>card : {{card.tags | json}}</pre>
+                <pre>ori  : {{tagsComponentOri | json}}</pre>
+            </div>
                 <div class="col-xs-6">
                     <div class="panel panel-default">
                     <div class="panel-heading"><strong>Anexados</strong></div>
                         <div class="panel-body">
                             <div class="row"  *ngFor="let tag of card.tags" style="margin-top: 5px; margin-left: 10px;">
-                                <div class="col-xs-12 glyphicon glyphicon-paperclip" style="with:60px;">                                                  {{tag.name | uppercase }}
-                                    <button type="submit" (click)="remove(tag, $event.target.checked)" 
+                                <div class="col-xs-12 glyphicon glyphicon-paperclip" style="with:60px;">                                                  
+                                        {{tag | uppercase }}
+                                        
+                                        <button type="button" (click)="remove(tag, $event)" 
                                         class="btn btn-primary glyphicon glyphicon-minus btn-xs" style="width: -10%;">
                                     </button>
                                 </div>

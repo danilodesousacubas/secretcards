@@ -27,8 +27,9 @@ public class CardController {
 	private CardConverter cardConverter;
 	
 	@RequestMapping(method=RequestMethod.POST)
-	private Card save(@RequestBody final Card card) {
-		return cardService.save(card);
+	private void save(@RequestBody final CardDTO cardDTO) {
+		Card card = cardConverter.toModel(cardDTO);
+		cardService.save(card);
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
@@ -51,7 +52,8 @@ public class CardController {
 	}
 	
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
-	private Card getCard1(@PathVariable final Long id) {
-		return cardService.findCardById(id);
+	private CardDTO find(@PathVariable final Long id) {
+		Card card = cardService.findCardById(id);
+		return cardConverter.toDTO(card);
 	}
 }
