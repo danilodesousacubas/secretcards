@@ -28,22 +28,15 @@ public class CardController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	private void save(@RequestBody final CardDTO cardDTO) {
-		Card card = cardConverter.toModel(cardDTO);
+		Card cardObject = null;
+		cardObject = prepareCard(cardDTO);
+		Card card = cardConverter.toModel(cardDTO, cardObject);
 		cardService.save(card);
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	private List<Card> getCard(@PathVariable final Long id) {
 		return Arrays.asList(cardService.findCardById(id));
-	}
-	
-	@RequestMapping(method = RequestMethod.PUT)
-	private void update(@RequestBody final CardDTO cardDTO) {
-		Card card = cardConverter.toModel(cardDTO);
-
-		if (!Objects.isNull(card)) {
-			cardService.update(card);
-		}
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
@@ -55,5 +48,15 @@ public class CardController {
 	private CardDTO find(@PathVariable final Long id) {
 		Card card = cardService.findCardById(id);
 		return cardConverter.toDTO(card);
+	}
+	
+	private Card prepareCard(final CardDTO cardDTO) {
+		Card cardObject;
+		if (Objects.isNull(cardDTO.getId())) {
+			cardObject = new Card();
+		} else {
+			cardObject = cardService.findCardById(cardDTO.getId());
+		}
+		return cardObject;
 	}
 }

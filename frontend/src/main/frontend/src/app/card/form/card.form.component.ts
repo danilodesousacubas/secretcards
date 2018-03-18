@@ -52,15 +52,6 @@ export class CardForm {
 
         event.preventDefault();
     
-        if(this.card.id !== null){
-            this._http.put(this.configService.getContext()+ '/rest/card', JSON.stringify(this.card), options)
-            .subscribe(() => {
-                this.card = new CardComponent();
-                this._router.navigate(['/cards']);
-            }, error =>  console.log(error));
-            return;    
-        }
-
         this._http.post(this.configService.getContext()+ '/rest/card', JSON.stringify(this.card), options)
             .subscribe(() => {
                 this.card = new CardComponent();
@@ -91,16 +82,25 @@ export class CardForm {
         this._http.get(this.configService.getContext()+'/rest/card/edit/' + this.cardId, options)
             .subscribe(x =>  {
                 this.card = x.json();
-            
+                
+                let newList: TagComponent[] = [];
                 this.tagsComponent = [];
 
-                this.card.tags.forEach(tag => {
-                    let tags = this.tagsComponentOri.filter(tagComponent => TagComponent.name === tag);
-            
-                    tags.forEach(t => {
-                        this.tagsComponent.splice(this.tagsComponent.indexOf(t, 1));
-                    });
+                this.tagsComponentOri.forEach(x=> {
+                    if(this.card.tags.some(j=> j === x.name)) {
+                        newList.push(x);
+                    }
                 });
+                
+                this.tagsComponentOri.forEach(x=> {
+                    if(newList.some(j=> j.name === x.name)){
+                        //DEBUG
+                        //TO DO REMOVE ELSE
+                        // is contain
+                    } else {
+                        this.tagsComponent.push(x);
+                    }
+                 })
             
             }, 
         error => console.log(error));

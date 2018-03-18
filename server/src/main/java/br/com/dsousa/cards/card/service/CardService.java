@@ -32,8 +32,7 @@ public class CardService {
 		if(!tagsUpdate.isEmpty()){
 			card.setTags(tagsUpdate);
 		}
-
-		return cardRepository.saveAndFlush(card);
+		return cardRepository.save(card);
 	}
 
 	private void saveOrUpdateTags(final Card card, Set<Tag> tagsUpdate) {
@@ -50,24 +49,7 @@ public class CardService {
 	}
 	
 	public Card update(Card card) {
-//		Card temp = findCardById(card.getId());
-		
-//		 Set<Tag> tagsDoBanco = temp.getTags();
-//		 Set<Tag> tagsDaTela = card.getTags();
-
-		 
-//		 saveOrUpdateTags(temp, tagsDoBanco);
-//		 temp.setTags(tagsDoBanco);
-//		 cardRepository.save(temp);
-		 
-//		 saveOrUpdateTags(temp, tagsDaTela);
-//		 temp.setTags(tagsDaTela);
-		 cardRepository.save(card);
-		 
-//		 tudo.addAll(tagsDoBanco);
-//		 tudo.addAll(tagsDaTela);
-		
-		return card;
+		return cardRepository.save(card);
 	}
 	
 	public Card findCardById(Long id){
