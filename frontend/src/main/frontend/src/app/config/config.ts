@@ -16,6 +16,8 @@ export class Config{
         } else if(this._perfil === 'production'){
             this._context = 'https://secretcards.herokuapp.com';
         }
+
+        console.log("FRONT CONTEXT", this._context);
     }
 
     getContext() {
