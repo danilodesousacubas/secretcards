@@ -80,7 +80,7 @@ export class CardForm {
     };
 
     findTag(options) {
-        return this._http.get(this.configService.getContext() + '/rest/tag', options)
+        this._http.get(this.configService.getContext() + '/rest/tag', options)
             .subscribe(tag => {
                 this.tagsComponent = tag.json();
                 this.tagsComponentOri = tag.json();
@@ -88,9 +88,21 @@ export class CardForm {
     };
 
     actionEdit(options){
-        return this._http.get(this.configService.getContext()+'/rest/card/edit/' + this.cardId, options)
+        this._http.get(this.configService.getContext()+'/rest/card/edit/' + this.cardId, options)
             .subscribe(x =>  {
                 this.card = x.json();
-            }, error => console.log(error));
+            
+                this.tagsComponent = [];
+
+                this.card.tags.forEach(tag => {
+                    let tags = this.tagsComponentOri.filter(tagComponent => TagComponent.name === tag);
+            
+                    tags.forEach(t => {
+                        this.tagsComponent.splice(this.tagsComponent.indexOf(t, 1));
+                    });
+                });
+            
+            }, 
+        error => console.log(error));
     };
 }
