@@ -1,10 +1,11 @@
 #### Techs:
- - Java
- - Spring-boot 
- - Angular 
- - Docker
- - Ionic
- - Postgres 
+ - Java 1.8
+ - Spring-boot 1.5.4 
+ - Angular 5
+ - Docker 1.18
+ - Ionic 3
+ - Postgres (heroku postgres)
+ - Node v7.10.1
  
 #### install server
 mvn clean install -U
