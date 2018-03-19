@@ -18,26 +18,30 @@ public class TagService {
 	@Autowired
 	private TagRepository tagRepository;
 
+	public Tag findByName(final String name) {
+		return tagRepository.findByName(name);
+	}
+
 	public Tag findById(final Long id) {
 		return tagRepository.findOne(id);
 	}
-	
-	public Tag save(final Tag tag){
+
+	public Tag save(final Tag tag) {
 		return tagRepository.save(tag);
 	}
-	
-	public Tag update(final Tag tag){
-		Tag tagPersisted = tagRepository.findOne(tag.getId()); 
-		
-		if(Objects.isNull(tag)){
+
+	public Tag update(final Tag tag) {
+		Tag tagPersisted = tagRepository.findOne(tag.getId());
+
+		if (Objects.isNull(tag)) {
 			return null;
 		}
 		tagPersisted.setName(tag.getName());
-		
+
 		return tagRepository.save(tagPersisted);
 	}
-	
-	public List<Tag> findAll(){
+
+	public List<Tag> findAll() {
 		return tagRepository.findAll();
 	}
 }
