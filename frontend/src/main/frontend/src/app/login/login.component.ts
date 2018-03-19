@@ -59,8 +59,6 @@ export class LoginComponent {
                  data => {
                     localStorage.setItem('id_token', data.token)
                     localStorage.setItem('login', this.login);
-                    console.log("Logado");
-                    console.log("bla");
                     this.route.navigate(['/cards'])
                 },
                 error => console.log(error)
@@ -69,11 +67,8 @@ export class LoginComponent {
     }
 
     loginWithFacebook(): void {
-
-        console.log("asdf")
          this._fb.login()
            .then((response: LoginResponse) => console.log(response))
            .catch((error: any) => console.error(error));
-    
-      }
+    }
 }
