@@ -1,12 +1,17 @@
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Component, Input} from '@angular/core';
-import { CardComponent } from '../card.component';
-import { JwtService } from '../../../app/services/jwt.service';
-import { ActivatedRoute } from '@angular/router';
-import { CardService } from '../service/card.service';
-import { Config } from '../../config/config';
 import { Router } from "@angular/router";
 
+import { ActivatedRoute } from '@angular/router';
+
+import { CardComponent } from '../card.component';
+import { JwtService } from '../../../app/services/jwt.service';
+
+import { CardService } from '../service/card.service';
+import { Config } from '../../config/config';
+
+import { TagListComponent } from '../../tag/tag.list.component';
+import { TagComponent } from '../../tag/tag.component';
 
 @Component({
     moduleId: module.id,
@@ -15,69 +20,89 @@ import { Router } from "@angular/router";
 })
 
 export class CardForm {
+ 
+    configService = new Config();
+    jwtService = new JwtService();
+    cardService = new CardService();
 
-    card: CardComponent  = new CardComponent();
-    tags: Object[] = [];
-    http: Http;
+    card: CardComponent = new CardComponent();
+    tagsComponent: TagComponent[] = [];
+
+    tagsComponentOri: TagComponent[] = [];
     cardId: number;
-    service = new CardService();
-    
+        
     cards: Object[] = [];
     jsonData: JSON;
-    config = new Config();
-    
-    private router: Router;
         
-    jwt = new JwtService();
-    
     constructor(private _http: Http, private route: ActivatedRoute, private _router: Router) {
-        this.http = _http;
-        this.router = _router;
         
-        let options = this.jwt.createHeader(this.http);
+        let options = this.jwtService.createHeader(this._http);
 
-        this.http.get(this.config.getContext() + '/rest/tag', options)
-            .subscribe(x =>  {
-                this.tags = x.json(); 
+        this.findTag(options);
+
+        let subscriber = route.params.subscribe(param => { 
+            this.cardId = param['cardId'];
+            this.actionEdit(options);                
+        });
+
+    }
+
+    save(event) {
+        let options = this.jwtService.createHeader(this._http);
+
+        event.preventDefault();
+    
+        this._http.post(this.configService.getContext()+ '/rest/card', JSON.stringify(this.card), options)
+            .subscribe(() => {
+                this.card = new CardComponent();
+                this._router.navigate(['/cards']);
             }, error =>  console.log(error));
-
-             let subscriber = route.params.subscribe(p => {
-                 this.cardId = p['cardId']
-    
-                 let options = this.jwt.createHeader(this.http);
-                 
-                this.http.get(this.config.getContext()+'/rest/card/edit/' + this.cardId, options)
-                    .subscribe(x =>  {
-                        this.card = x.json();
-                    
-                    }, error => console.log(error));
-
-                this.tags; 
-             });
-
     }
 
-  cadastrar(event) {
- 
-    let options = this.jwt.createHeader(this.http);
-
-    event.preventDefault();
-    
-    this.http.post(this.config.getContext()+ '/rest/card', JSON.stringify(this.card), options)
-        .subscribe(() => {
-            this.card = new CardComponent();
-            this.router.navigate(['/cards']);
-        
-        }, error =>  console.log(error));
+    onChange(tagStr:string, event) {
+        this.card.tags.push(tagStr);
+        this.tagsComponent = this.tagsComponent.filter(tagComponent => tagComponent.name !== tagStr);
     }
 
-    onChange(tag:string, event) {
-        this.card.tags.push(tag);
-        this.tags.splice(this.tags.indexOf(tag), 1);
-    }
+    remove(tagStr:string, event) {
+        this.card.tags = this.card.tags.filter(tag => tag !== tagStr);
+        let tagComponent = this.tagsComponentOri.filter(tagComponent => tagComponent.name === tagStr)[0];
+        this.tagsComponent.push(tagComponent);
+    };
 
-    remove(tag:string, event) {
-        this.card.tags.splice(this.card.tags.indexOf(tag), 1);
-        this.tags.push(tag);
-    }
+    findTag(options) {
+        this._http.get(this.configService.getContext() + '/rest/tag', options)
+            .subscribe(tag => {
+                this.tagsComponent = tag.json();
+                this.tagsComponentOri = tag.json();
+            }, error => console.log(error));
+    };
+
+    actionEdit(options){
+        this._http.get(this.configService.getContext()+'/rest/card/edit/' + this.cardId, options)
+            .subscribe(x =>  {
+                this.card = x.json();
+                
+                let newList: TagComponent[] = [];
+                this.tagsComponent = [];
+
+                this.tagsComponentOri.forEach(x=> {
+                    if(this.card.tags.some(j=> j === x.name)) {
+                        newList.push(x);
+                    }
+                });
+                
+                this.tagsComponentOri.forEach(x=> {
+                    if(newList.some(j=> j.name === x.name)){
+                        //DEBUG
+                        //TO DO REMOVE ELSE
+                        // is contain
+                    } else {
+                        this.tagsComponent.push(x);
+                    }
+                 })
+            
+            }, 
+        error => console.log(error));
+    };
 }
