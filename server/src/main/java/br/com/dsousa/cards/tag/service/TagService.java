@@ -2,12 +2,11 @@ package br.com.dsousa.cards.tag.service;
 
 import java.util.List;
 import java.util.Objects;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
-
 import br.com.dsousa.cards.tag.domain.Tag;
 import br.com.dsousa.cards.tag.repository.TagRepository;
 
@@ -44,4 +43,9 @@ public class TagService {
 	public List<Tag> findAll() {
 		return tagRepository.findAll();
 	}
+	
+	public List<Tag> findAllOrder() {
+		return tagRepository.findAll(new Sort(Direction.ASC, "name"));
+	}
+	
 }
