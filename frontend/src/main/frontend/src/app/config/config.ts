@@ -5,7 +5,7 @@ export class Config{
     private _perfil = 'qas';
     
     constructor() {
-        if(this._perfil === 'local'){
+        if(this._perfil === 'production'){
             this._context = 'http://localhost:8080';
         
         } else if(this._perfil === 'dev'){
