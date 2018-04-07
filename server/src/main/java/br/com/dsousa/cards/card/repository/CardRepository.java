@@ -13,4 +13,7 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
 	@Query("select  distinct card from Card card inner join fetch card.tags tag where tag.id = ?1")
 	public List<Card> getFindCards(Long id);
+	
+	@Query("select distinct card from Card card inner join fetch card.tags tag order by card.modifiedDate desc")
+	public List<Card> findAll();
 }

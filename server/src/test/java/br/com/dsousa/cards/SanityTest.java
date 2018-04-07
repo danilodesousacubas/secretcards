@@ -11,6 +11,6 @@ public class SanityTest {
 
 	@Test
 	public void contextLoads() {
-		System.out.println("Sanidade");
+		System.out.println("Sanity Test");
 	}
 }

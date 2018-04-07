@@ -53,6 +53,6 @@ public class TagController {
 	
 	@RequestMapping(method=GET)
 	public List<Tag> findAll() {  
-		return tagService.findAll();
+		return tagService.findAllOrder();
 	}
 }

@@ -1,6 +1,7 @@
 export class Config{
 
     private _context;
+
     private _perfil = 'qas';
     
     constructor() {
