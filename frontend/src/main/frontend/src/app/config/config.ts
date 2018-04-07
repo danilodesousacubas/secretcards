@@ -2,10 +2,10 @@ export class Config{
 
     private _context;
 
-    private _perfil = 'qas';
+    private _perfil = 'production';
     
     constructor() {
-        if(this._perfil === 'production'){
+        if(this._perfil === 'local'){
             this._context = 'http://localhost:8080';
         
         } else if(this._perfil === 'dev'){
