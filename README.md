@@ -60,7 +60,8 @@ ionic serve --lab dock
  
  
  
-docker build -t secretcards/postgresql
+docker build -t secretcards/postgresql .
+docker system prune -a
 
  
  
