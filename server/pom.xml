@@ -16,7 +16,7 @@
     </parent>
 
 	 <properties>
-       	 <docker.image.prefix>sec-dock</docker.image.prefix>
+       	 <docker.image.prefix>secretcards</docker.image.prefix>
        	 <java.version>1.8</java.version>
    	 </properties>
 
@@ -152,6 +152,11 @@
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
+					<entryPoint>["java", "-Dserver.port=8080", "-Dspring.profiles.active=docker", "-jar", "./${project.name}.war"]</entryPoint>
+					<imageTags>
+						<imageTag>${branch}</imageTag>
+						<imageTag>latest</imageTag>
+					</imageTags>
                 </configuration>
             </plugin>
             <!-- end::plugin[] -->

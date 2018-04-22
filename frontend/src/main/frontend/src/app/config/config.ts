@@ -2,7 +2,7 @@ export class Config{
 
     private _context;
 
-    private _perfil = 'qas';
+    private _perfil = 'local';
     
     constructor() {
         if(this._perfil === 'local'){

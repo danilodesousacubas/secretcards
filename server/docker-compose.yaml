@@ -1,14 +1,31 @@
-postgres:
-    container_name: postgresql
-    image: postgres:9.5
+version: "3.3"
+services:
+  postgresql:
+    image: secretcards/postgresql:latest
+    networks:
+        - secret-cards-network-master
     volumes:
-        - /var/lib/postgres/data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+    command: postgres -c 'shared_buffers=256MB' -c 'max_connections=250'
     environment:
-          - POSTGRES_PASSWORD=postgres
-#application:
-#    container_name: cards  
-#    image: sec-dock/server
-#    ports:
-#      - "8080:8080"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+       - "5432:5432"
+  web:
+    image: secretcards/server:latest
+    networks:
+        - secret-cards-network-master
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SERVER_PORT: 8080
+      SPRING_JPA_SHOW-SQL: 'false'
+      SPRING_DATASOURCE_TOMCAT_MAX-ACTIVE: 5
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgresql
+
+networks: 
+    secret-cards-network-master:
+      external: true   

@@ -57,6 +57,10 @@ ionic serve --lab dock
 
 ##### configure bd-cli
  -bdname?sslmode=require
+ 
+ 
+ 
+docker build -t secretcards/postgresql
 
  
  
