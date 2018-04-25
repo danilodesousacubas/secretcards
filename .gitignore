@@ -48,3 +48,5 @@ mobile/ionic/cards/www/build/main\.js
 mobile/ionic/cards/www/
 
 mobile/ionic/cards/\.sourcemaps/
+
+docker-kubernets/kubectl

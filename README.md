@@ -62,7 +62,10 @@ ionic serve --lab dock
  
 docker build -t secretcards/postgresql .
 docker system prune -a
+kubectl create -f deployment.yaml
+kubectl get pods
 
+kubectl delete pods [nome do pod]
  
  
  

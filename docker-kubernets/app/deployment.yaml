@@ -1,0 +1,15 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  template:
+    metadata:
+      labels:
+       name: aplicacao-pod
+    spec:
+      containers:
+        - name: container-app-secretcards
+          image: secretcards/server
+          ports:
+            - containerPort: 80
